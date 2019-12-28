@@ -49,6 +49,11 @@
     if (parser.seen('X')) delta_tower_angle_trim.a  = parser.value_float();
     if (parser.seen('Y')) delta_tower_angle_trim.b  = parser.value_float();
     if (parser.seen('Z')) delta_tower_angle_trim.c  = parser.value_float();
+    // Start of Flsun add-ons , curtesy of Carl Mueller, this is used by the MKS tft on the QQ :
+    if (parser.seen('I')) delta_height              += parser.value_linear_units();
+    if (parser.seen('C')) delta_diagonal_rod        += parser.value_linear_units();
+    if (parser.seen('D')) delta_radius              += parser.value_linear_units();
+    // End of Flsun add-ons
     recalc_delta_settings();
   }
 

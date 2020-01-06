@@ -38,6 +38,16 @@
 //
 #define DISABLE_DEBUG
 
+#define FLASH_EEPROM_EMULATION
+#define EEPROM_PAGE_SIZE	(uint16)0x800 // 2048
+#define EEPROM_START_ADDRESS	((uint32)(0x8000000 + 512 * 1024 - 2 * EEPROM_PAGE_SIZE))
+#define E2END (EEPROM_PAGE_SIZE - 1)
+
+//
+// Note: MKS Robin nano board is using SPI2 interface.
+//
+#define SPI_MODULE 2
+
 //
 // Limit Switches
 //
@@ -46,9 +56,8 @@
 #define Z_MIN_PIN         PA11
 #define Z_MAX_PIN         PC4
 
-#ifndef FIL_RUNOUT_PIN
-  #define FIL_RUNOUT_PIN   PA4   // MT_DET
-#endif
+#define FIL_RUNOUT_PIN    PA4  // MT_DET1
+#define FIL_RUNOUT2_PIN   PE6  // MT_DET2
 
 //
 // Steppers
@@ -90,29 +99,15 @@
 #define FAN_PIN            PB1   // FAN
 
 //
-// Thermocouples
-//
-//#define MAX6675_SS_PIN     PE5  // TC1 - CS1
-//#define MAX6675_SS_PIN     PE6  // TC2 - CS2
-
-//
 // Misc. Functions
 //
 #define POWER_LOSS_PIN     PA2   // PW_DET
-#define PS_ON_PIN          PA3   // PW_OFF
-
-#define LED_PIN            PB2
-
-//
-// SD Card
-//
-#define SDIO_SUPPORT
-#define SD_DETECT_PIN      PD12
 
 //
 // LCD / Controller
 //
 #define BEEPER_PIN         PC5
+#define SD_DETECT_PIN      PD12
 
 /**
  * Note: MKS Robin TFT screens use various TFT controllers.
@@ -120,18 +115,18 @@
  * to let the bootloader init the screen.
  */
 #if ENABLED(FSMC_GRAPHICAL_TFT)
-  #define FSMC_CS_PIN        PD7    // NE4
-  #define FSMC_RS_PIN        PD11   // A0
+  #define FSMC_CS_PIN      PD7    // FSMC_NE4
+  #define FSMC_RS_PIN      PD11   // FSMC_A0
 
-  #define LCD_RESET_PIN      PC6    // FSMC_RST
-  #define NO_LCD_REINIT             // Suppress LCD re-initialization
+  #define LCD_RESET_PIN    PC6    // FSMC_RESET
+  #define NO_LCD_REINIT           // Suppress LCD re-initialization
 
-  #define LCD_BACKLIGHT_PIN  PD13
+  #define LCD_BACKLIGHT_PIN PD13  // FSMC_LIGHT
 
   #if ENABLED(TOUCH_BUTTONS)
-    #define TOUCH_CS_PIN     PA7  // SPI2_NSS
-    #define TOUCH_SCK_PIN    PB13 // SPI2_SCK
-    #define TOUCH_MISO_PIN   PB14 // SPI2_MISO
-    #define TOUCH_MOSI_PIN   PB15 // SPI2_MOSI
+    #define TOUCH_CS_PIN   PA7    // SPI2_NSS
+    #define TOUCH_SCK_PIN  PB13   // SPI2_CLK
+    #define TOUCH_MOSI_PIN PB15   // SPI2_MOSI
+    #define TOUCH_MISO_PIN PB14   // SPI2_MISO
   #endif
 #endif

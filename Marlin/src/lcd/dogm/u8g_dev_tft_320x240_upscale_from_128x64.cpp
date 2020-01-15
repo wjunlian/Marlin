@@ -525,6 +525,28 @@ static const uint16_t ili9341_init[] = {
     B10000000,B00000000,B00000000,B00000001,
     B01111111,B11111111,B11111111,B11111110,
   };
+  static const uint8_t buttonC_2[] = {
+    B01111111,B11111111,B11111111,B11111110,
+    B10000000,B00000000,B00000000,B00000001,
+    B10000000,B00000000,B00000000,B00000001,
+    B10000000,B00000000,B00000000,B00000001,
+    B10000000,B00000000,B00000000,B00000001,
+    B10000000,B00000000,B00000000,B00000001,
+    B10000000,B00000000,B00000000,B00000001,
+    B10000000,B00000100,B00000000,B00000001,
+    B10000000,B00001100,B00000000,B00000001,
+    B10000000,B00011111,B11111100,B00000001,
+    B10000000,B00111111,B11111100,B00000001,
+    B10000000,B00011111,B11111100,B00000001,
+    B10000000,B00001100,B00011100,B00000001,
+    B10000000,B00000100,B00011100,B00000001,
+    B10000000,B00000000,B00011100,B00000001,
+    B10000000,B00000000,B00000000,B00000001,
+    B10000000,B00000000,B00000000,B00000001,
+    B10000000,B00000000,B00000000,B00000001,
+    B10000000,B00000000,B00000000,B00000001,
+    B01111111,B11111111,B11111111,B11111110,
+  };
 
   void drawImage(const uint8_t *data, u8g_t *u8g, u8g_dev_t *dev, uint16_t length, uint16_t height, uint16_t color) {
     uint16_t buffer[128];
@@ -645,17 +667,25 @@ uint8_t u8g_dev_tft_320x240_upscale_from_128x64_fn(u8g_t *u8g, u8g_dev_t *dev, u
             u8g_WriteSequence(u8g, dev, 150, (uint8_t *)buffer);
         #endif
 
+#ifdef EXCHANGE_ENTER_AND_EXIT_BUTTONS
+        setWindow(u8g, dev, 14, 185,  77, 224);
+        drawImage(buttonC_2, u8g, dev, 32, 20, TFT_BTOKMENU_COLOR);
+#else
         setWindow(u8g, dev, 14, 185,  77, 224);
         drawImage(buttonD, u8g, dev, 32, 20, TFT_BTCANCEL_COLOR);
-
+#endif
         setWindow(u8g, dev, 90, 185, 153, 224);
         drawImage(buttonA, u8g, dev, 32, 20, TFT_BTARROWS_COLOR);
 
         setWindow(u8g, dev, 166, 185, 229, 224);
         drawImage(buttonB, u8g, dev, 32, 20, TFT_BTARROWS_COLOR);
-
+#ifdef EXCHANGE_ENTER_AND_EXIT_BUTTONS
+        setWindow(u8g, dev, 242, 185, 305, 224);
+        drawImage(buttonD, u8g, dev, 32, 20, TFT_BTCANCEL_COLOR);
+#else
         setWindow(u8g, dev, 242, 185, 305, 224);
         drawImage(buttonC, u8g, dev, 32, 20, TFT_BTOKMENU_COLOR);
+ #endif
       #endif // TOUCH_BUTTONS
 
       return 0;

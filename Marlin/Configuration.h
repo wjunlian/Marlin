@@ -1149,7 +1149,7 @@
 #define DISABLE_INACTIVE_EXTRUDER   // Keep only the active extruder enabled
 
 // @section machine
-#ifdef TMC2208_STANDALONE
+#ifdef Q5_USING_TMC2208
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR false
 #define INVERT_Y_DIR false

@@ -495,9 +495,14 @@
   //#define DEFAULT_Kd 440
 
   // FLSUN Q5
-  #define DEFAULT_Kp 12.88
-  #define DEFAULT_Ki 0.72
-  #define DEFAULT_Kd 57.54
+  //#define DEFAULT_Kp 12.88
+  //#define DEFAULT_Ki 0.72
+  //#define DEFAULT_Kd 57.54
+
+  //Stefans PID
+  #define DEFAULT_Kp 12.19
+  #define DEFAULT_Ki 0.76
+  #define DEFAULT_Kd 49.10
 
 #endif // PIDTEMP
 

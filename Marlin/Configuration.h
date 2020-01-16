@@ -103,7 +103,7 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT 3
+#define SERIAL_PORT -1
 
 /**
  * Select a secondary serial port on the board to use for communication with the host.
@@ -112,7 +112,7 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT_2 1
+#define SERIAL_PORT_2 3
 
 /**
  * This setting determines the communication speed of the printer.
@@ -490,10 +490,10 @@
   //#define DEFAULT_Ki 2.25
   //#define DEFAULT_Kd 440
 
-  // FLSUN QQ-S, 200 C with 100% part cooling
-  #define DEFAULT_Kp 28.16
-  #define DEFAULT_Ki 3.38
-  #define DEFAULT_Kd 58.69
+  // FLSUN Q5
+  #define DEFAULT_Kp 12.88
+  #define DEFAULT_Ki 0.72
+  #define DEFAULT_Kd 57.54
 
 #endif // PIDTEMP
 
@@ -542,10 +542,10 @@
   //#define DEFAULT_bedKi 1.41
   //#define DEFAULT_bedKd 1675.16
 
-  // FLSUN QQ-S stock 1.6mm aluminium heater with 4mm lattice glass
-  #define DEFAULT_bedKp 325.10
-  #define DEFAULT_bedKi 63.35
-  #define DEFAULT_bedKd 417.10
+  // FLSUN Q5
+  #define DEFAULT_bedKp 73.15
+  #define DEFAULT_bedKi 13.83
+  #define DEFAULT_bedKd 257.99
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED

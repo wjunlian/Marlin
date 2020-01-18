@@ -2174,12 +2174,11 @@
 //
 // FSMC display mounted upside down
 //
-//#define FMSC_UPSIDE_DOWN
+#define FMSC_UPSIDE_DOWN
 #ifdef FMSC_UPSIDE_DOWN
   #define LCD_SCREEN_ROT_180
   #define REVERSE_MENU_DIRECTION
   #define REVERSE_ENCODER_DIRECTION
-  #define EXCHANGE_ENTER_AND_EXIT_BUTTONS
 #endif
 //=============================================================================
 //============================  Other Controllers  ============================

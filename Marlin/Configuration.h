@@ -1765,7 +1765,7 @@
  *
  */
 #define SDSUPPORT
-//#define SDIO_SUPPORT
+#define SDIO_SUPPORT
 
 /**
  * SD CARD: SPI SPEED

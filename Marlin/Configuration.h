@@ -470,7 +470,7 @@
   //#define SLOW_PWM_HEATERS      // PWM with very low frequency (roughly 0.125Hz=8s) and minimum state time of approximately 1s useful for heaters driven by a relay
   //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with gcode: M301 E[extruder number, 0-2]
-  #define PID_FUNCTIONAL_RANGE 20 // If the temperature difference between the target temperature and the actual temperature
+  #define PID_FUNCTIONAL_RANGE 30 // If the temperature difference between the target temperature and the actual temperature
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
@@ -491,9 +491,14 @@
   //#define DEFAULT_Kd 440
 
   // FLSUN QQ-S, 200 C with 100% part cooling
-  #define DEFAULT_Kp 28.16
-  #define DEFAULT_Ki 3.38
-  #define DEFAULT_Kd 58.69
+  //#define DEFAULT_Kp 28.16
+  //#define DEFAULT_Ki 3.38
+  //#define DEFAULT_Kd 58.69
+
+  // FLSUN QQ-S, from Martin Carlsson
+  #define DEFAULT_Kp 11.78
+  #define DEFAULT_Ki 0.64
+  #define DEFAULT_Kd 54.52
 
 #endif // PIDTEMP
 
@@ -567,7 +572,7 @@
  * Note: For Bowden Extruders make this large enough to allow load/unload.
  */
 #define PREVENT_LENGTHY_EXTRUDE
-#define EXTRUDE_MAXLENGTH 800
+#define EXTRUDE_MAXLENGTH 950
 
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
@@ -2174,7 +2179,7 @@
 //
 // FSMC display mounted upside down
 //
-#define FMSC_UPSIDE_DOWN
+//#define FMSC_UPSIDE_DOWN
 #ifdef FMSC_UPSIDE_DOWN
   #define LCD_SCREEN_ROT_180
   #define REVERSE_MENU_DIRECTION

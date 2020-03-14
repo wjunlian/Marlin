@@ -73,9 +73,9 @@
 //#define Q5
 //#define Q5_2208
 
-#define AUTO_BED_LEVELING_BILINEAR
-//#define AUTO_BED_LEVELING_UBL
-//#define LIN_ADVANCE
+//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_UBL
+#define LIN_ADVANCE
 
 
 // @section info
@@ -2327,9 +2327,11 @@
 //=============================================================================
 
 //
-// ADS7843/XPT2046 ADC Touchscreen such as ILI9341 2.8
+// ADS7843 ADC Touchscreen such as ILI9341 2.8
 //
-//#define TOUCH_BUTTONS
+#if ANY(QQS,Q5,Q5_2208)
+#define TOUCH_BUTTONS
+#endif
 #if ENABLED(TOUCH_BUTTONS)
   #define BUTTON_DELAY_EDIT  50 // (ms) Button repeat delay for edit screens
   #define BUTTON_DELAY_MENU 250 // (ms) Button repeat delay for menus
